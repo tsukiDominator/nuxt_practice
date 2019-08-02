@@ -4,6 +4,9 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  server: {
+    port: 3010, // default: 3000
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
