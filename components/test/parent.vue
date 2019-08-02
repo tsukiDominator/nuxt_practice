@@ -20,6 +20,9 @@
       <br />
       总价为:{{sumPrice}}元
     </div>
+    <div class="interface">
+      <h3>这部分测试表单，http请求和后台接口</h3>
+    </div>
   </div>
 </template>
 
@@ -75,12 +78,20 @@ export default {
   width: 500px;
   border-style: solid;
   border-width: 5px;
+  margin: auto; /*使整个父组件居中 */
+  text-align: center;
 }
 .chuanzhi {
   background-color: aqua;
 }
 .vuex {
   background-color: aquamarine;
+}
+.interface {
+  background-color: antiquewhite;
+}
+h3 {
+  color: crimson;
 }
 </style>
 
