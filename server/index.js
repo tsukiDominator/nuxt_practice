@@ -1,8 +1,15 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const bodyParser = require('koa-bodyparser')
+const router = require('koa-router')()
 
 const app = new Koa()
+
+app.use(bodyParser());
+
+//配置路由
+app.use(router.routes()).use(router.allowedMethods());
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')

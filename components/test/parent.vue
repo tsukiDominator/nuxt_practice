@@ -11,17 +11,38 @@
       柠檬2元一个，买{{lemonCount}}个
       <button @click="addLemon(Number(countLemon))">增加</button>
       <button @click="reduceLemon(Number(countLemon))">减少</button>
-      <input type="number" placeholder="增加或减少的数量" v-model="countLemon" />
+      <input type="number" placeholder="增加或减少的数量" v-model="countLemon" style="width:50px" />个
       <br />
       桃子3元一个，买{{peachCount}}个
       <button @click="addPeach(Number(countPeach))">增加</button>
       <button @click="reducePeach(Number(countPeach))">减少</button>
-      <input type="number" placeholder="增加或减少的数量" v-model="countPeach" />
+      <input type="number" placeholder="增加或减少的数量" v-model="countPeach" style="width:50px" />个
       <br />
       总价为:{{sumPrice}}元
     </div>
     <div class="interface">
       <h3>这部分测试表单，http请求和后台接口</h3>
+      <form action="/api/users/register" method="post">
+        <p>
+          用户名：
+          <input type="text" key="name"/>
+        </p>
+        <p>
+          邮箱：
+          <input type="text" key="email"/>
+        </p>
+        <p>
+          密码：
+          <input type="text" key="password"/>
+        </p>
+        <p>
+          请再次输入密码：
+          <input type="text" key="password2"/>
+        </p>
+        <p>
+          <input type="submit" value="提交" />
+        </p>
+      </form>
     </div>
   </div>
 </template>
