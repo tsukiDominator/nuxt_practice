@@ -1,5 +1,7 @@
 <template>
-  <mapview></mapview>
+  <div>
+    <mapview></mapview>
+  </div>
 </template>
 
 <script>

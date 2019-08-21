@@ -9,7 +9,7 @@
     </span>
     <br />
     <span>
-      <nuxt-link to="/map">ArcGISapi</nuxt-link>
+      <nuxt-link to="/map">ArcGISapi练习</nuxt-link>
     </span>
   </div>
 </template>
