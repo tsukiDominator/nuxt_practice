@@ -124,6 +124,11 @@ export default {
             this.mainView.height / this.mapView.height
           )
       });
+    },
+    changePosition(e) {
+      this.mainView.goTo({
+        center: e.mapPoint
+      });
     }
   },
   /**师兄说这里直接都写在mounted函数里就可以了 */
@@ -135,7 +140,11 @@ export default {
         .loadModules(["esri/core/watchUtils"], this.option)
         .then(([watchUtils]) => {
           watchUtils.when(this.mainView, "stationary", this.updateOverview);
+          watchUtils.when(this.mapView, "stationary", this.updateOverview);
         });
+      this.mapView.on("click", event => {
+        this.changePosition(event);
+      });
     }
   }
 };
