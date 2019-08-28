@@ -22,7 +22,7 @@ async function start() {
   //在nuxt.config.js文件中的server配置项中更改默认的3000端口（亦可以更改host）
   const {
     host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3010
+    port = process.env.PORT || 3020
   } = nuxt.options.server
 
   // Build in development
