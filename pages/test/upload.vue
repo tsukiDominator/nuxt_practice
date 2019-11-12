@@ -38,13 +38,17 @@ export default {
       const { fileList } = this;
       const formData = new FormData();
       fileList.forEach(file => {
-        formData.append("files[]", file);
+        formData.append("myFile", file);
       });
       this.uploading = true;
 
       // You can use any AJAX library you like
+      let config = {
+        //添加请求头
+        headers: { "Content-Type": "multipart/form-data" }
+      };
       axios
-        .post("your url", formData)
+        .post("/", formData, config)
         .then(res => {
           this.fileList = [];
           this.uploading = false;
