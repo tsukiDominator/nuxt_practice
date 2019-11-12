@@ -1,35 +1,61 @@
 <template>
-  <a-upload
-    name="file"
-    :multiple="true"
-    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-    :headers="headers"
-    @change="handleChange"
-  >
-    <a-button type="primary">
-      <a-icon type="upload" />上传文件
-    </a-button>
-  </a-upload>
+  <div class="clearfix">
+    <a-upload :fileList="fileList" :remove="handleRemove" :beforeUpload="beforeUpload">
+      <a-button>
+        <a-icon type="upload" />Select File
+      </a-button>
+    </a-upload>
+    <a-button
+      type="primary"
+      @click="handleUpload"
+      :disabled="fileList.length === 0"
+      :loading="uploading"
+      style="margin-top: 16px"
+    >{{uploading ? 'Uploading' : 'Start Upload' }}</a-button>
+  </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      headers: {
-        authorization: "authorization-text"
-      }
+      fileList: [],
+      uploading: false
     };
   },
   methods: {
-    handleChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        this.$message.success(`${info.file.name} 文件上传成功！`);
-      } else if (info.file.status === "error") {
-        this.$message.error(`${info.file.name} 文件上传失败！`);
-      }
+    handleRemove(file) {
+      const index = this.fileList.indexOf(file);
+      const newFileList = this.fileList.slice();
+      newFileList.splice(index, 1);
+      this.fileList = newFileList;
+    },
+    beforeUpload(file) {
+      this.fileList = [...this.fileList, file];
+      return false;
+    },
+    handleUpload() {
+      const { fileList } = this;
+      const formData = new FormData();
+      fileList.forEach(file => {
+        formData.append("files[]", file);
+      });
+      this.uploading = true;
+
+      // You can use any AJAX library you like
+      axios
+        .post("your url", formData)
+        .then(res => {
+          this.fileList = [];
+          this.uploading = false;
+          this.$message.success("上传成功.");
+          console.log("服务端返回讯息：", res);
+        })
+        .catch(res => {
+          this.uploading = false;
+          this.$message.error("上传失败.");
+          console.log("服务端返回讯息：", res);
+        });
     }
   }
 };
