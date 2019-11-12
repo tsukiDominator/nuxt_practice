@@ -15,6 +15,7 @@
     <span>
       <nuxt-link to="/test/object">ES6 Class 练习</nuxt-link>
     </span>
+    <br />
     <span>
       <nuxt-link to="/test/upload">上传文件测试</nuxt-link>
     </span>
