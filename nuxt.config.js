@@ -30,13 +30,16 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'ant-design-vue/dist/antd.css'
+    'ant-design-vue/dist/antd.css',
+    "video.js/dist/video-js.css",
+    "vue-video-player/src/custom-theme.css"
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui'
+    '@/plugins/antd-ui',
+    '@/plugins/vue-video-player',
   ],
   /*
   ** Nuxt.js dev-modules

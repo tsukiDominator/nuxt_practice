@@ -19,6 +19,14 @@
     <span>
       <nuxt-link to="/test/upload">上传文件测试</nuxt-link>
     </span>
+    <br />
+    <span>
+      <nuxt-link to="/todos">nuxt VueX 官网例子</nuxt-link>
+    </span>
+    <br />
+    <span>
+      <nuxt-link to="/video">视频测试</nuxt-link>
+    </span>
   </div>
 </template>
 
